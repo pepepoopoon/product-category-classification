@@ -1,0 +1,37 @@
+product_id,seller_id,title,description,category
+p-001,el-seller-1,wireless gaming mouse model 11,synthetic electronics catalog example,electronics
+p-002,el-seller-1,usb c charging cable model 12,synthetic electronics catalog example,electronics
+p-003,el-seller-1,portable bluetooth speaker model 13,synthetic electronics catalog example,electronics
+p-004,el-seller-2,wireless gaming mouse model 21,synthetic electronics catalog example,electronics
+p-005,el-seller-2,usb c charging cable model 22,synthetic electronics catalog example,electronics
+p-006,el-seller-2,portable bluetooth speaker model 23,synthetic electronics catalog example,electronics
+p-007,el-seller-3,wireless gaming mouse model 31,synthetic electronics catalog example,electronics
+p-008,el-seller-3,usb c charging cable model 32,synthetic electronics catalog example,electronics
+p-009,el-seller-3,portable bluetooth speaker model 33,synthetic electronics catalog example,electronics
+p-010,el-seller-4,wireless gaming mouse model 41,synthetic electronics catalog example,electronics
+p-011,el-seller-4,usb c charging cable model 42,synthetic electronics catalog example,electronics
+p-012,el-seller-4,portable bluetooth speaker model 43,synthetic electronics catalog example,electronics
+p-013,ho-seller-1,cotton kitchen towel model 11,synthetic home catalog example,home
+p-014,ho-seller-1,ceramic coffee mug model 12,synthetic home catalog example,home
+p-015,ho-seller-1,wooden storage shelf model 13,synthetic home catalog example,home
+p-016,ho-seller-2,cotton kitchen towel model 21,synthetic home catalog example,home
+p-017,ho-seller-2,ceramic coffee mug model 22,synthetic home catalog example,home
+p-018,ho-seller-2,wooden storage shelf model 23,synthetic home catalog example,home
+p-019,ho-seller-3,cotton kitchen towel model 31,synthetic home catalog example,home
+p-020,ho-seller-3,ceramic coffee mug model 32,synthetic home catalog example,home
+p-021,ho-seller-3,wooden storage shelf model 33,synthetic home catalog example,home
+p-022,ho-seller-4,cotton kitchen towel model 41,synthetic home catalog example,home
+p-023,ho-seller-4,ceramic coffee mug model 42,synthetic home catalog example,home
+p-024,ho-seller-4,wooden storage shelf model 43,synthetic home catalog example,home
+p-025,sp-seller-1,fitness yoga mat model 11,synthetic sports catalog example,sports
+p-026,sp-seller-1,training football ball model 12,synthetic sports catalog example,sports
+p-027,sp-seller-1,lightweight running bottle model 13,synthetic sports catalog example,sports
+p-028,sp-seller-2,fitness yoga mat model 21,synthetic sports catalog example,sports
+p-029,sp-seller-2,training football ball model 22,synthetic sports catalog example,sports
+p-030,sp-seller-2,lightweight running bottle model 23,synthetic sports catalog example,sports
+p-031,sp-seller-3,fitness yoga mat model 31,synthetic sports catalog example,sports
+p-032,sp-seller-3,training football ball model 32,synthetic sports catalog example,sports
+p-033,sp-seller-3,lightweight running bottle model 33,synthetic sports catalog example,sports
+p-034,sp-seller-4,fitness yoga mat model 41,synthetic sports catalog example,sports
+p-035,sp-seller-4,training football ball model 42,synthetic sports catalog example,sports
+p-036,sp-seller-4,lightweight running bottle model 43,synthetic sports catalog example,sports
