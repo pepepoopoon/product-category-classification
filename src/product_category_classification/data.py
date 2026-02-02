@@ -103,11 +103,29 @@ def split_by_seller(
     split_names = data["seller_id"].map(assignments)
     if split_names.isna().any():
         raise RuntimeError("Не всем продавцам назначена часть данных")
+
+    offer_keys = combine_text(data).str.casefold().str.replace(r"\s+", " ", regex=True)
+    offer_split_counts = (
+        pd.DataFrame({"offer_key": offer_keys, "split": split_names})
+        .groupby("offer_key")["split"]
+        .nunique()
+    )
+    leaked_keys = offer_split_counts[offer_split_counts > 1].index
+    if len(leaked_keys) > 0:
+        leaked_product_ids = data.loc[offer_keys.isin(leaked_keys), "product_id"].tolist()
+        raise ValueError(
+            "Обнаружены дубликаты товарного текста в разных split; "
+            f"product_id: {leaked_product_ids[:10]}"
+        )
+
     manifest = data[["product_id", "seller_id", "category"]].copy()
     manifest["split"] = split_names
-    parts = tuple(data.loc[split_names.eq(name)].reset_index(drop=True) for name in (
-        "train",
-        "validation",
-        "test",
-    ))
+    parts = tuple(
+        data.loc[split_names.eq(name)].reset_index(drop=True)
+        for name in (
+            "train",
+            "validation",
+            "test",
+        )
+    )
     return (*parts, manifest)
