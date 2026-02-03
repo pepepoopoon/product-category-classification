@@ -15,17 +15,36 @@ def test_smoke_generator_supports_learning_curve() -> None:
 
 
 def test_experiment_records_seller_disjoint_metrics() -> None:
-    result = run_experiment(
+    baseline = run_experiment(
         sellers_per_category=6,
         data_seed=17,
         split_seed=19,
         model_seed=23,
         hypothesis="Проверить контракт эксперимента",
     )
+    result = run_experiment(
+        sellers_per_category=6,
+        data_seed=17,
+        split_seed=29,
+        model_seed=31,
+        hypothesis="Сравнить word-only конфигурацию",
+        regularization_c=0.5,
+        feature_mode="word",
+        word_ngram_max=1,
+        text_field_mode="title",
+        label_noise_rate=0.10,
+        text_noise_rate=0.10,
+        validation_fraction=0.25,
+        test_fraction=0.25,
+        baseline=baseline,
+    )
 
     assert result["dataset"]["sellers"] == 18
     assert 0 <= result["test"]["macro_f1"] <= 1
     assert set(result["test"]["per_class"]) >= {"electronics", "home", "sports"}
+    assert result["dataset"]["feature_count"] < baseline["dataset"]["feature_count"]
+    assert "test_macro_f1_delta" in result["comparison"]
+    assert result["dataset"]["noisy_train_labels"] > 0
 
 
 def test_end_to_end(tmp_path) -> None:

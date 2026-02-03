@@ -11,32 +11,48 @@ from sklearn.metrics import f1_score
 from sklearn.pipeline import FeatureUnion, Pipeline
 
 
-def build_model(*, random_state: int = 42) -> Pipeline:
+def build_model(
+    *,
+    random_state: int = 42,
+    regularization_c: float = 1.0,
+    feature_mode: str = "union",
+    word_ngram_max: int = 2,
+    char_ngram_max: int = 5,
+) -> Pipeline:
     """Построить word/char TF-IDF модель."""
-    features = FeatureUnion(
-        [
+    if regularization_c <= 0:
+        raise ValueError("regularization_c должна быть положительной")
+    if feature_mode not in {"word", "char", "union"}:
+        raise ValueError("feature_mode должна быть word, char или union")
+    feature_blocks = []
+    if feature_mode in {"word", "union"}:
+        feature_blocks.append(
             (
                 "word",
                 TfidfVectorizer(
                     analyzer="word",
-                    ngram_range=(1, 2),
+                    ngram_range=(1, word_ngram_max),
                     min_df=1,
                     sublinear_tf=True,
                 ),
-            ),
+            )
+        )
+    if feature_mode in {"char", "union"}:
+        feature_blocks.append(
             (
                 "char",
                 TfidfVectorizer(
                     analyzer="char_wb",
-                    ngram_range=(3, 5),
+                    ngram_range=(3, char_ngram_max),
                     min_df=1,
                     sublinear_tf=True,
                 ),
-            ),
-        ]
-    )
+            )
+        )
+    features = FeatureUnion(feature_blocks)
     classifier = LogisticRegression(
         class_weight="balanced",
+        C=regularization_c,
         max_iter=1_000,
         random_state=random_state,
     )

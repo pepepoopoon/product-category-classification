@@ -84,7 +84,11 @@ product-predict --model artifacts/smoke/model.joblib --text "wireless gaming mou
 
 `make experiment` создаёт отдельную synthetic-выборку, выполняет seller-disjoint split
 и сохраняет validation/test macro-F1, top-2 accuracy, confusion matrix и per-class метрики.
-Smoke-результаты проверяют pipeline и не являются оценкой реального каталога.
+Параметры `--feature-mode`, `--regularization-c` и границы n-грамм поддерживают абляции,
+а `--baseline` добавляет дельты метрик и числа признаков. Smoke-результаты проверяют
+pipeline и не являются оценкой реального каталога.
+Для data-quality сценариев доступны выбор текстового поля, шум train-меток, токенный шум
+на validation/test и явные доли seller-group частей.
 
 ## Ограничения
 
