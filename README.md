@@ -48,6 +48,8 @@ python -m pip install -e ".[dev]"
 
 Формат и официальный источник описаны в [`data/README.md`](data/README.md). Smoke-набор
 воспроизводится командой `product-generate-smoke --output data/smoke.csv`.
+Для learning curve генератор принимает `--sellers-per-category` и `--seed`, сохраняя
+минимум трёх независимых продавцов на категорию для seller-group split.
 
 ## Запуск обучения
 
@@ -77,6 +79,12 @@ product-predict --model artifacts/smoke/model.joblib --text "wireless gaming mou
 
 `pytest -q` проверяет схему, отсутствие пересечения продавцов и полный smoke-сценарий;
 `ruff check .` выполняет статическую проверку.
+
+## Инженерные эксперименты
+
+`make experiment` создаёт отдельную synthetic-выборку, выполняет seller-disjoint split
+и сохраняет validation/test macro-F1, top-2 accuracy, confusion matrix и per-class метрики.
+Smoke-результаты проверяют pipeline и не являются оценкой реального каталога.
 
 ## Ограничения
 

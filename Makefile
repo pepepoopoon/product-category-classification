@@ -1,4 +1,4 @@
-.PHONY: install lint test smoke train evaluate predict
+.PHONY: install lint test smoke train evaluate predict experiment
 
 install:
 	python -m pip install -e ".[dev]"
@@ -20,3 +20,8 @@ evaluate:
 
 predict:
 	product-predict --model artifacts/smoke/model.joblib --text "wireless gaming mouse"
+
+experiment:
+	PYTHONPATH=src python -m product_category_classification.experiment \
+		--output experiments/results/001_baseline.json \
+		--hypothesis "Зафиксировать seller-disjoint baseline"
