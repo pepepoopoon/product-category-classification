@@ -22,6 +22,7 @@ def test_experiment_records_seller_disjoint_metrics() -> None:
         model_seed=23,
         hypothesis="Проверить контракт эксперимента",
     )
+    baseline_feature_count = baseline["dataset"].pop("feature_count")
     result = run_experiment(
         sellers_per_category=6,
         data_seed=17,
@@ -42,8 +43,9 @@ def test_experiment_records_seller_disjoint_metrics() -> None:
     assert result["dataset"]["sellers"] == 18
     assert 0 <= result["test"]["macro_f1"] <= 1
     assert set(result["test"]["per_class"]) >= {"electronics", "home", "sports"}
-    assert result["dataset"]["feature_count"] < baseline["dataset"]["feature_count"]
+    assert result["dataset"]["feature_count"] < baseline_feature_count
     assert "test_macro_f1_delta" in result["comparison"]
+    assert result["comparison"]["feature_count_delta"] is None
     assert result["dataset"]["noisy_train_labels"] > 0
 
 

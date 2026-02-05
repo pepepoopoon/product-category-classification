@@ -161,6 +161,7 @@ def run_experiment(
             for value in (baseline_validation, baseline_test, baseline_dataset)
         ):
             raise ValueError("baseline не соответствует схеме эксперимента")
+        baseline_feature_count = baseline_dataset.get("feature_count")
         result["comparison"] = {
             "validation_macro_f1_delta": (
                 float(validation_metrics["macro_f1"])
@@ -174,8 +175,9 @@ def run_experiment(
                 - float(baseline_test["top_2_accuracy"])
             ),
             "feature_count_delta": (
-                int(result["dataset"]["feature_count"])
-                - int(baseline_dataset["feature_count"])
+                int(result["dataset"]["feature_count"]) - int(baseline_feature_count)
+                if baseline_feature_count is not None
+                else None
             ),
         }
     return result
