@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "experiment": "synthetic_product_category_sensitivity",
+  "hypothesis": "Оценить перенос на новых продавцов при 20 продавцах на категорию",
+  "parameters": {
+    "sellers_per_category": 20,
+    "data_seed": 42,
+    "split_seed": 42,
+    "model_seed": 42,
+    "regularization_c": 1.0,
+    "feature_mode": "union",
+    "word_ngram_max": 2,
+    "char_ngram_max": 5,
+    "text_field_mode": "both",
+    "label_noise_rate": 0.0,
+    "text_noise_rate": 0.0,
+    "validation_fraction": 0.2,
+    "test_fraction": 0.2
+  },
+  "dataset": {
+    "mode": "synthetic",
+    "rows": 180,
+    "sellers": 60,
+    "split_rows": {
+      "test": 36,
+      "train": 108,
+      "validation": 36
+    },
+    "split_sellers": {
+      "test": 12,
+      "train": 36,
+      "validation": 12
+    },
+    "feature_count": 1595,
+    "noisy_train_labels": 0
+  },
+  "validation": {
+    "rows": 36,
+    "macro_f1": 1.0,
+    "top_2_accuracy": 1.0,
+    "labels": [
+      "electronics",
+      "home",
+      "sports"
+    ]
+  },
+  "test": {
+    "rows": 36,
+    "macro_f1": 1.0,
+    "top_2_accuracy": 1.0,
+    "labels": [
+      "electronics",
+      "home",
+      "sports"
+    ],
+    "confusion_matrix": [
+      [
+        12,
+        0,
+        0
+      ],
+      [
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        0,
+        12
+      ]
+    ],
+    "per_class": {
+      "electronics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 12.0
+      },
+      "home": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 12.0
+      },
+      "sports": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 12.0
+      },
+      "accuracy": 1.0,
+      "macro avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      },
+      "weighted avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 36.0
+      }
+    }
+  },
+  "comparison": {
+    "validation_macro_f1_delta": 0.0,
+    "test_macro_f1_delta": 0.0,
+    "test_top_2_accuracy_delta": 0.0,
+    "feature_count_delta": null
+  }
+}
