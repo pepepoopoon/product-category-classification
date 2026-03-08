@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "experiment": "synthetic_product_category_sensitivity",
+  "hypothesis": "Проверить совместный текстовый стресс при 20 продавцах",
+  "parameters": {
+    "sellers_per_category": 20,
+    "data_seed": 367,
+    "split_seed": 467,
+    "model_seed": 567,
+    "regularization_c": 5.0,
+    "feature_mode": "char",
+    "word_ngram_max": 2,
+    "char_ngram_max": 5,
+    "text_field_mode": "both",
+    "label_noise_rate": 0.25,
+    "text_noise_rate": 0.4,
+    "validation_fraction": 0.2,
+    "test_fraction": 0.2
+  },
+  "dataset": {
+    "mode": "synthetic",
+    "rows": 180,
+    "sellers": 60,
+    "split_rows": {
+      "test": 36,
+      "train": 108,
+      "validation": 36
+    },
+    "split_sellers": {
+      "test": 12,
+      "train": 36,
+      "validation": 12
+    },
+    "feature_count": 1229,
+    "noisy_train_labels": 32
+  },
+  "validation": {
+    "rows": 36,
+    "macro_f1": 0.8600732600732601,
+    "top_2_accuracy": 1.0,
+    "labels": [
+      "electronics",
+      "home",
+      "sports"
+    ]
+  },
+  "test": {
+    "rows": 36,
+    "macro_f1": 0.8857142857142858,
+    "top_2_accuracy": 1.0,
+    "labels": [
+      "electronics",
+      "home",
+      "sports"
+    ],
+    "confusion_matrix": [
+      [
+        12,
+        0,
+        0
+      ],
+      [
+        0,
+        12,
+        0
+      ],
+      [
+        4,
+        0,
+        8
+      ]
+    ],
+    "per_class": {
+      "electronics": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1-score": 0.8571428571428571,
+        "support": 12.0
+      },
+      "home": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 12.0
+      },
+      "sports": {
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.8,
+        "support": 12.0
+      },
+      "accuracy": 0.8888888888888888,
+      "macro avg": {
+        "precision": 0.9166666666666666,
+        "recall": 0.8888888888888888,
+        "f1-score": 0.8857142857142858,
+        "support": 36.0
+      },
+      "weighted avg": {
+        "precision": 0.9166666666666666,
+        "recall": 0.8888888888888888,
+        "f1-score": 0.8857142857142857,
+        "support": 36.0
+      }
+    }
+  },
+  "comparison": {
+    "validation_macro_f1_delta": -0.13992673992673987,
+    "test_macro_f1_delta": -0.11428571428571421,
+    "test_top_2_accuracy_delta": 0.0,
+    "feature_count_delta": null
+  }
+}

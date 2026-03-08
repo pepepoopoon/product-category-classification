@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "experiment": "synthetic_product_category_sensitivity",
+  "hypothesis": "Проверить совместный текстовый стресс при 15 продавцах",
+  "parameters": {
+    "sellers_per_category": 15,
+    "data_seed": 359,
+    "split_seed": 459,
+    "model_seed": 559,
+    "regularization_c": 2.0,
+    "feature_mode": "word",
+    "word_ngram_max": 2,
+    "char_ngram_max": 5,
+    "text_field_mode": "both",
+    "label_noise_rate": 0.2,
+    "text_noise_rate": 0.3,
+    "validation_fraction": 0.2,
+    "test_fraction": 0.2
+  },
+  "dataset": {
+    "mode": "synthetic",
+    "rows": 135,
+    "sellers": 45,
+    "split_rows": {
+      "test": 27,
+      "train": 81,
+      "validation": 27
+    },
+    "split_sellers": {
+      "test": 9,
+      "train": 27,
+      "validation": 9
+    },
+    "feature_count": 354,
+    "noisy_train_labels": 13
+  },
+  "validation": {
+    "rows": 27,
+    "macro_f1": 1.0,
+    "top_2_accuracy": 1.0,
+    "labels": [
+      "electronics",
+      "home",
+      "sports"
+    ]
+  },
+  "test": {
+    "rows": 27,
+    "macro_f1": 1.0,
+    "top_2_accuracy": 1.0,
+    "labels": [
+      "electronics",
+      "home",
+      "sports"
+    ],
+    "confusion_matrix": [
+      [
+        9,
+        0,
+        0
+      ],
+      [
+        0,
+        9,
+        0
+      ],
+      [
+        0,
+        0,
+        9
+      ]
+    ],
+    "per_class": {
+      "electronics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 9.0
+      },
+      "home": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 9.0
+      },
+      "sports": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 9.0
+      },
+      "accuracy": 1.0,
+      "macro avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 27.0
+      },
+      "weighted avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 27.0
+      }
+    }
+  },
+  "comparison": {
+    "validation_macro_f1_delta": 0.0,
+    "test_macro_f1_delta": 0.0,
+    "test_top_2_accuracy_delta": 0.0,
+    "feature_count_delta": null
+  }
+}
